@@ -15,7 +15,7 @@ const PAIR_GENES: [number, number][] = [
 export function buildFeatureVector(profile: GeneProfile): number[] {
   const mut = GENES.map((g) => (profile[g] === "mutated" ? 1 : 0));
   const unk = GENES.map((g) => (profile[g] === "unknown" ? 1 : 0));
-  const pairs = PAIR_GENES.map(([a, b]) => mut[a] * mut[b]);
+  const pairs = PAIR_GENES.map(([a, b]) => mut[a]! * mut[b]!);
   return [...mut, ...unk, ...pairs];
 }
 
